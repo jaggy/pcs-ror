@@ -15,7 +15,7 @@ development:
   database: pcs.git_development
   pool: 5
   username: root
-  password:
+  password: hangin
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: pcs.git_test
   pool: 5
   username: root
-  password:
+  password: hangin
   socket: /tmp/mysql.sock
 
 production:
@@ -38,5 +38,5 @@ production:
   database: pcs.git_production
   pool: 5
   username: root
-  password:
+  password:	hangin
   socket: /tmp/mysql.sock
