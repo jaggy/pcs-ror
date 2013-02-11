@@ -6,6 +6,10 @@ describe User do
 		FactoryGirl.create(:user).should be_valid
 	end
 
+	it "is invalid without a username" do
+		FactoryGirl.build(:user, :username => nil).should_not be_valid
+	end
+	it "is invalid without a password"
 	it "is invalid without a first name"
 	it "is valid without a middle name"
 	it "is invalid without a last name"
