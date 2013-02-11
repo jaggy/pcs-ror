@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :role do
-    name "MyString"
-    description "MyText"
+    name "Administrator"
+    description "Complete access to the whole system"
   end
 end
