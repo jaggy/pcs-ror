@@ -2,14 +2,14 @@
 
 FactoryGirl.define do
   factory :user do
-    username "MyString"
-    password "MyString"
-    first_name "MyString"
-    middle_name "MyString"
-    last_name "MyString"
-    email "MyString"
-    image "MyString"
-    status false
-    role nil
+    username { Faker::Internet.user_name }
+    password "qwerty1234"
+    first_name { Faker::Name.first_name }
+    middle_name { Faker::Name.last_name }
+    last_name { Faker::Name.last_name }
+    email { |u| Faker::Internet.email(u.username) }
+    image { |u| "#{u.username}.jpg" }
+    status 1
+    association :role
   end
 end
