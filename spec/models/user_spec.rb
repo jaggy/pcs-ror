@@ -42,7 +42,11 @@ describe User do
 		user =  FactoryGirl.create(:user)
 		FactoryGirl.build(:user, :username => user.username).should_not be_valid
 	end
-	it "doesn't accept dumplicate emails"
+
+	it "doesn't accept dumplicate emails" do
+		user =  FactoryGirl.create(:user)
+		FactoryGirl.build(:user, :email => user.email).should_not be_valid
+	end
 	it "hashes the password before saving"
 	it "authenticates with matching username and password"
 	it "is invalid with incorrect passowrd"
