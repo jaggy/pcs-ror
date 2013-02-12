@@ -11,8 +11,8 @@ describe Role do
 	end
 
 	it "doesn't allow duplicate role names" do
-		FactoryGirl.create(:role)
-		FactoryGirl.build(:role).should_not be_valid
+		FactoryGirl.create(:role, :name => 'Administrator')
+		FactoryGirl.build(:role, :name => 'Administrator').should_not be_valid
 	end
 
 end

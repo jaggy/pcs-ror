@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :role do
-    name "Administrator"
+    name { Faker::Name.title }
     description "Complete access to the whole system"
   end
 end
