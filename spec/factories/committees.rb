@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :committee do
-    name "MyString"
-    description "MyText"
-    user nil
+    name { Faker::Company.name }
+    description { Faker::Lorem.sentence }
+    association :user
   end
 end

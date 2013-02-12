@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :role do
     name { Faker::Name.title }
-    description "Complete access to the whole system"
+    description { Faker::Lorem.sentence }
   end
 end
