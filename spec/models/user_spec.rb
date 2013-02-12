@@ -48,7 +48,11 @@ describe User do
 		FactoryGirl.build(:user, :email => user.email).should_not be_valid
 	end
 
-	it "hashes the password before saving"
+	it "hashes the password before saving" do
+		user = FactoryGirl.create(:user)
+		user.password.should_not == user.password_digest
+	end
+
 	it "authenticates with matching username and password"
 	it "is invalid with incorrect passowrd"
 
