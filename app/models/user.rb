@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
 	validates :role, :presence => true
 
 	has_secure_password
+
 end
