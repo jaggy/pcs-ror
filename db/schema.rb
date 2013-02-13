@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212075618) do
+ActiveRecord::Schema.define(:version => 20130213012935) do
+
+  create_table "committees", :force => true do |t|
+    t.string   "name",        :limit => 40, :null => false
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "committees", ["user_id"], :name => "index_committees_on_user_id"
+
+  create_table "committees_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "committee_id"
+  end
+
+  add_index "committees_users", ["user_id", "committee_id"], :name => "index_committees_users_on_user_id_and_committee_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name",        :limit => 18, :null => false

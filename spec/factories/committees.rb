@@ -1,8 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :role do
-    name { Faker::Name.title }
+  factory :committee do
+    name { Faker::Company.name }
     description { Faker::Lorem.sentence }
+    association :user
   end
 end
