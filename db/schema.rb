@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20130213012935) do
     t.integer "committee_id"
   end
 
+  add_index "committees_users", ["user_id", "committee_id"], :name => "index_committees_users_on_user_id_and_committee_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name",        :limit => 18, :null => false
     t.text     "description"
