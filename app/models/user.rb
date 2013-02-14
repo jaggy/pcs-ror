@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_one :committee
+	has_many :discussions
 	has_and_belongs_to_many :committees
+
 	belongs_to :role
 
   attr_accessible :email, :first_name, :image, :last_name, :middle_name, :password, :password_confirmation, :status, :username, :committee
