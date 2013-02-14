@@ -69,5 +69,13 @@ describe User do
 		login.authenticate('wrong password').should == false
 	end
 
+	it "with <Standard> priviliges is invalid with multiple Committees" do
+		role = FactoryGirl.build(:role, :name => 'Standard')
+		committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
+		user = FactoryGirl.build(:user, :role => role, :committees => committees).should_not be_valid
 
+	end
+
+	it "with <Administrator> privileges is valid with multiple Committees"
+	it "with <Moderator> privileges is valid with multiple Committees"
 end
