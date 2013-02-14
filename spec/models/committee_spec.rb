@@ -13,4 +13,9 @@ describe Committee do
 		FactoryGirl.build(:committee, :user => nil).should be_valid
 	end
 
+	it "does not accept duplicate names" do
+		committee = FactoryGirl.create(:committee)
+		FactoryGirl.build(:committee, :name => committee.name).should_not be_valid
+	end
+
 end
