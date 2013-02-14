@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214101112) do
+ActiveRecord::Schema.define(:version => 20130214104712) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",        :limit => 32, :null => false
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(:version => 20130214101112) do
   end
 
   add_index "committees_users", ["user_id", "committee_id"], :name => "index_committees_users_on_user_id_and_committee_id"
+
+  create_table "discussions", :force => true do |t|
+    t.string   "title",        :null => false
+    t.text     "description"
+    t.integer  "committee_id", :null => false
+    t.integer  "user_id",      :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "discussions", ["committee_id"], :name => "index_discussions_on_committee_id"
+  add_index "discussions", ["user_id"], :name => "index_discussions_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name",        :limit => 18, :null => false
