@@ -29,7 +29,10 @@ describe Discussion do
 	end
 
 	it "allows the same title for different committees" do
-
+		committee = FactoryGirl.create(:committee)
+		different_committee = FactoryGirl.create(:committee, :name => 'Different Committee Name')
+		discussion = FactoryGirl.create(:discussion, :committee => committee)
+		FactoryGirl.build(:discussion, :committee => different_committee, :title => discussion.title).should be_valid
 	end
 
 end

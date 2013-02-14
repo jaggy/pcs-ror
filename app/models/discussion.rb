@@ -10,7 +10,7 @@ class Discussion < ActiveRecord::Base
 	validate :unique_committee_post
 
 	def unique_committee_post
-		if self.committee && self.new_record? && Discussion.where(:title => self.title).present?
+		if self.committee && self.new_record? && Discussion.where(:title => self.title, :committee_id => self.committee).present?
 			errors.add(:title, 'Title has already been taken')
 		end
 	end
