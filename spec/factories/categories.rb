@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :category do
-    name "MyString"
-    description "MyText"
+    sequence(:name) { |n| "Category #{n}" }
+    description { Faker::Lorem.sentence }
   end
 end
