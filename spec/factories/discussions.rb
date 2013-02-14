@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :discussion do
-    title "MyString"
-    description "MyText"
-    committee nil
-    user nil
+		sequence(:title) { |n| "Discussion #{n}" }
+    description { Faker::Lorem.sentence }
+		association :committee
+		association :user
   end
 end
