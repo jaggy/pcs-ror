@@ -70,12 +70,21 @@ describe User do
 	end
 
 	it "with <Standard> priviliges is invalid with multiple Committees" do
-		role = FactoryGirl.build(:role, :name => 'Standard')
+		role = FactoryGirl.create(:role, :name => 'Standard')
 		committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
 		user = FactoryGirl.build(:user, :role => role, :committees => committees).should_not be_valid
-
 	end
 
-	it "with <Administrator> privileges is valid with multiple Committees"
-	it "with <Moderator> privileges is valid with multiple Committees"
+	it "with <Administrator> privileges is valid with multiple Committees" do
+		role = FactoryGirl.create(:role, :name => 'Administrator')
+		committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
+		user = FactoryGirl.build(:user, :role => role, :committees => committees).should be_valid
+	end
+
+	it "with <Moderator> privileges is valid with multiple Committees" do
+		role = FactoryGirl.create(:role, :name => 'Moderator')
+		committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
+		user = FactoryGirl.build(:user, :role => role, :committees => committees).should be_valid
+	end
+	
 end
