@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213012935) do
+ActiveRecord::Schema.define(:version => 20130214101112) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name",        :limit => 32, :null => false
+    t.text     "description"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "committees", :force => true do |t|
     t.string   "name",        :limit => 40, :null => false
