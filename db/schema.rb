@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130215064038) do
   add_index "discussions", ["user_id"], :name => "index_discussions_on_user_id"
 
   create_table "posts", :force => true do |t|
-    t.string   "title",         :null => false
+    t.string   "title"
     t.text     "content"
     t.integer  "parent_id"
     t.integer  "user_id",       :null => false
