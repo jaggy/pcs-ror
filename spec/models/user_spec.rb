@@ -53,6 +53,20 @@ describe User do
 		user.password.should_not == user.password_digest
 	end
 
+	it "is invalid with a username with less than 5 characters" do
+		FactoryGirl.build(:user, :username => 'aeos').should_not be_valid
+	end
+
+	it "is invalid with a username with more than 18 characters" do
+		FactoryGirl.build(:user, :username => 'this_should_be_more_than_18_characters').should_not be_valid
+	end
+
+	it "is doesn't accept a username with a non alphabetical starting character"
+	it "is invalid with a password with less than 6 characters"
+	it "is invalid with a username with special characters"
+	it "does not accept an invalid email"
+	
+
 	it "is invalid without a matching confirmation password" do
 		FactoryGirl.build(:user, :password_confirmation => 'a different password').should_not be_valid
 	end

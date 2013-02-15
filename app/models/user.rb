@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	belongs_to :role
 
   attr_accessible :email, :first_name, :image, :last_name, :middle_name, :password, :password_confirmation, :status, :username, :committee
-	validates :username, :presence => true, :uniqueness => true
+	validates :username, :presence => true, :uniqueness => true, :length => { :minimum => 5, :maximum => 18 }
 	validates :password, :presence => {:on => :create}
 	validates :first_name, :presence => true
 	validates :last_name, :presence => true
