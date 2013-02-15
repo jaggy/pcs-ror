@@ -2,11 +2,9 @@
 
 FactoryGirl.define do
   factory :post do
-    title "MyString"
-    content "MyText"
-    parent nil
-    user nil
-    discussion nil
-    category nil
+		sequence(:title) { |n| "Title #{n}" }
+    content { Faker::Lorem.sentence }
+    association :user
+		association :category
   end
 end
