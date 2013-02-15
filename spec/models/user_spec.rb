@@ -38,12 +38,12 @@ describe User do
 		FactoryGirl.build(:user, :role => nil).should_not be_valid
 	end
 
-	it "doesn't accept duplicate usernames"	do
+	it "does not accept duplicate usernames"	do
 		user =  FactoryGirl.create(:user)
 		FactoryGirl.build(:user, :username => user.username).should_not be_valid
 	end
 
-	it "doesn't accept duplicate emails"  do
+	it "does not accept duplicate emails"  do
 		user =  FactoryGirl.create(:user)
 		FactoryGirl.build(:user, :email => user.email).should_not be_valid
 	end
@@ -61,7 +61,7 @@ describe User do
 		FactoryGirl.build(:user, :username => 'this_should_be_more_than_18_characters').should_not be_valid
 	end
 
-	it "is doesn't accept a username with a non alphabetical starting character" do
+	it "does not accept a username with a non alphabetical starting character" do
 		FactoryGirl.build(:user, :username => '1t_is_not_valid').should_not be_valid
 	end
 

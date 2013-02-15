@@ -26,7 +26,10 @@ describe Post do
 		FactoryGirl.build(:post, :parent => nil).should be_valid
 	end
 
-	it "is valid without a discussion"
+	it "is valid without a discussion" do
+		FactoryGirl.build(:post, :discussion => nil).should be_valid
+	end
+
 	it "does not accept duplicate titles"
 	it "cannot be it's own parent"
 	
