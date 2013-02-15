@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-    username { Faker::Internet.user_name }
+		sequence(:username) { |n| "username#{n}" }
     password "qwerty1234"
-		password_confirmation "qwerty1234"
+		password_confirmation { |u| u.password }
     first_name { Faker::Name.first_name }
     middle_name { Faker::Name.last_name }
     last_name { Faker::Name.last_name }
