@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	def committee_count
-		if(self.role && self.role.name === 'Standard' && self.committees.size > 1)
+		if(role && role.name === 'Standard' && committees.size > 1)
 			errors.add(:committees, 'User is not allowed to have multiple committees') 
 		end
 	end
