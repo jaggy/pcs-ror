@@ -61,9 +61,19 @@ describe User do
 		FactoryGirl.build(:user, :username => 'this_should_be_more_than_18_characters').should_not be_valid
 	end
 
-	it "is doesn't accept a username with a non alphabetical starting character"
+	it "is doesn't accept a username with a non alphabetical starting character" do
+		FactoryGirl.build(:user, :username => '1t_is_not_valid').should_not be_valid
+	end
+
+	it "is invalid with a username with special characters excpet '.' and '_'" do
+		FactoryGirl.build(:user, :username => 'a u$ername').should_not be_valid
+	end
+
+	it "is accepts a username with '.'s or '_'s" do
+		FactoryGirl.build(:user, :username => 'a_username.here').should be_valid
+	end
+
 	it "is invalid with a password with less than 6 characters"
-	it "is invalid with a username with special characters"
 	it "does not accept an invalid email"
 	
 
