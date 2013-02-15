@@ -1,8 +1,10 @@
 class Discussion < ActiveRecord::Base
+	has_many :posts
+
   belongs_to :committee
   belongs_to :user
-  attr_accessible :description, :title
-
+  
+	attr_accessible :description, :title
 	validates :title, :presence => true
 	validates :user, :presence => true
 	validates :committee, :presence => true
