@@ -65,7 +65,7 @@ describe User do
 		FactoryGirl.build(:user, :username => '1t_is_not_valid').should_not be_valid
 	end
 
-	it "is invalid with a username with special characters excpet '.' and '_'" do
+	it "is invalid with a username with special characters except '.' and '_'" do
 		FactoryGirl.build(:user, :username => 'a u$ername').should_not be_valid
 	end
 
@@ -73,9 +73,13 @@ describe User do
 		FactoryGirl.build(:user, :username => 'a_username.here').should be_valid
 	end
 
-	it "is invalid with a password with less than 6 characters"
-	it "does not accept an invalid email"
-	
+	it "is invalid with a password with less than 6 characters" do
+		FactoryGirl.build(:user, :password => 'a').should_not be_valid
+	end
+
+	it "does not accept an invalid email" do
+ 		FactoryGirl.build(:user, :email => 'notavalidemail').should_not be_valid
+	end
 
 	it "is invalid without a matching confirmation password" do
 		FactoryGirl.build(:user, :password_confirmation => 'a different password').should_not be_valid
