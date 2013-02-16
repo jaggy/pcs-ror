@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215235734) do
+ActiveRecord::Schema.define(:version => 20130216002600) do
+
+  create_table "attachments", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "mimetype",   :null => false
+    t.string   "path",       :null => false
+    t.integer  "size",       :null => false
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "attachments", ["post_id"], :name => "index_attachments_on_post_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name",        :limit => 32, :null => false
