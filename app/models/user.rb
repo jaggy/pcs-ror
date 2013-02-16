@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_one :committee
+	has_many :conferences
 	has_many :discussions
 	has_many :comments
 	has_many :sent_messages, :class_name => 'Message', :foreign_key => 'recipient_id'
