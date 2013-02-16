@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215064038) do
+ActiveRecord::Schema.define(:version => 20130215235734) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",        :limit => 32, :null => false
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(:version => 20130215064038) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content",    :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "post_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "committees", :force => true do |t|
     t.string   "name",        :limit => 40, :null => false

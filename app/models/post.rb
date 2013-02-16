@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
 	has_one :child, :class_name => 'Post', :foreign_key => 'parent_id'
+	has_many :posts
 
   belongs_to :parent, :class_name => 'Post', :foreign_key => 'parent_id'
   belongs_to :user
