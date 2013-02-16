@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216023302) do
+ActiveRecord::Schema.define(:version => 20130216024043) do
 
   create_table "attachments", :force => true do |t|
     t.string   "name",       :null => false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20130216023302) do
   add_index "committees_users", ["user_id", "committee_id"], :name => "index_committees_users_on_user_id_and_committee_id"
 
   create_table "conferences", :force => true do |t|
-    t.boolean  "is_read",    :default => false, :null => false
+    t.boolean  "is_read",    :default => false
     t.integer  "message_id",                    :null => false
     t.integer  "user_id",                       :null => false
     t.datetime "created_at",                    :null => false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20130216023302) do
 
   create_table "messages", :force => true do |t|
     t.text     "message",                         :null => false
-    t.boolean  "is_read",      :default => false, :null => false
+    t.boolean  "is_read",      :default => false
     t.integer  "sender_id",                       :null => false
     t.integer  "recipient_id"
     t.datetime "created_at",                      :null => false
