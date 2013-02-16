@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :conference do
-    is_read false
+    is_read 0
     association :user
     association :message
   end
