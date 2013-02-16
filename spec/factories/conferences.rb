@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :conference do
     is_read false
-    message nil
-    user nil
+    association :user
+    association :message
   end
 end
