@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
 	has_one :committee
 	has_many :discussions
 	has_many :comments
-	has_many :messages, :class_name => 'Message', :foreign_key => 'recipient_id'
-	has_many :messages, :class_name => 'Message', :foreign_key => 'sender_id'
+	has_many :sent_messages, :class_name => 'Message', :foreign_key => 'recipient_id'
+	has_many :recieved_messages, :class_name => 'Message', :foreign_key => 'sender_id'
 	has_many :posts
 	has_and_belongs_to_many :committees
 

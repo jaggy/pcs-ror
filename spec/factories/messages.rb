@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :message do
-    message "MyText"
+    message { Faker::Lorem.sentence }
     is_read false
-    sender nil
-    recipient nil
+		association :sender, :factory => :user
+		association :recipient, :factory => :user
   end
 end
