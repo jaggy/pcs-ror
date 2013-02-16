@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :attachment do
-    name "MyString"
-    mimetype "MyString"
-    path "MyString"
-    size ""
-    post nil
+    mimetype ['pdf', 'jpg', 'doc', 'docx', 'png', 'gif', 'psd', 'ppt', 'brb', 'lol'].sample
+    name { |a| "Attachment.#{a.mimetype}" }
+    path { |a| "#{ATTACHMENT_UPLOAD_PATH}#{a.name}" }
+    size { Faker::Address.zip_code }
+    association :post
   end
 end
