@@ -10,7 +10,12 @@ describe Comment do
 		FactoryGirl.build(:comment, :content => nil).should_not be_valid
 	end
 
-	it "is invalid without an owner"
-	it "is invalid without a post"
+	it "is invalid without an owner" do
+		FactoryGirl.build(:comment, :user => nil).should_not be_valid
+	end
+
+	it "is invalid without a post" do
+		FactoryGirl.build(:comment, :post => nil).should_not be_valid
+	end
 
 end
