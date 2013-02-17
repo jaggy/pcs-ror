@@ -22,7 +22,7 @@ describe Discussion do
 		FactoryGirl.build(:discussion, :committee => nil).should_not be_valid
 	end
 
-	describe "duplicate committees" do
+	describe "duplcate title names" do
 		
 		before :each do
 			@committee = FactoryGirl.create(:committee)
