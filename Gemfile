@@ -18,6 +18,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+	gem 'bcrypt-ruby', '~> 3.0.0'
 end
 
 gem 'jquery-rails'
@@ -29,6 +30,7 @@ group :development, :test do
 end
 
 group :test do
+	gem 'rb-fsevent'
 	gem 'faker'
 	gem 'capybara'
 	gem 'guard-rspec'
