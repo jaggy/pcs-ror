@@ -97,22 +97,40 @@ describe User do
 		login.authenticate('wrong password').should == false
 	end
 
-	it "with <Standard> priviliges is invalid with multiple Committees" do
-		role = FactoryGirl.create(:role, :name => 'Standard')
-		committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
-		user = FactoryGirl.build(:user, :role => role, :committees => committees).should_not be_valid
+	describe "inserting multiple committees" do
+		before :each do
+			@committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
+		end
+
+		context "Standard" do
+
+			it "is valid" do
+				role = FactoryGirl.create(:role, :name => 'Standard')
+				user = FactoryGirl.build(:user, :role => role, :committees => @committees).should_not be_valid
+			end
+
+		end
+
+
+		context "Administrator" do
+
+			it "is not valid" do
+				role = FactoryGirl.create(:role, :name => 'Administrator')
+				user = FactoryGirl.build(:user, :role => role, :committees => @committees).should be_valid
+			end
+
+		end
+
+
+		context "Moderator" do
+
+			it "is not valid" do
+				role = FactoryGirl.create(:role, :name => 'Moderator')
+				user = FactoryGirl.build(:user, :role => role, :committees => @committees).should be_valid
+			end
+
+		end
+
 	end
 
-	it "with <Administrator> privileges is valid with multiple Committees" do
-		role = FactoryGirl.create(:role, :name => 'Administrator')
-		committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
-		user = FactoryGirl.build(:user, :role => role, :committees => committees).should be_valid
-	end
-
-	it "with <Moderator> privileges is valid with multiple Committees" do
-		role = FactoryGirl.create(:role, :name => 'Moderator')
-		committees =  [FactoryGirl.create(:committee, :user => nil), FactoryGirl.create(:committee, :user => nil) ]
-		user = FactoryGirl.build(:user, :role => role, :committees => committees).should be_valid
-	end
-	
 end
